@@ -1,0 +1,42 @@
+{
+  "name": "MindMazeState",
+  "type": "object",
+  "properties": {
+    "game_room_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "position_x": {
+      "type": "number",
+      "default": 0
+    },
+    "position_y": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "trapped",
+        "finished"
+      ],
+      "default": "active"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "game_room_id",
+    "user_email"
+  ]
+}

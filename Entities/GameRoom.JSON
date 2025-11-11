@@ -1,0 +1,106 @@
+{
+  "name": "GameRoom",
+  "type": "object",
+  "properties": {
+    "game_code": {
+      "type": "string"
+    },
+    "quiz_id": {
+      "type": "string"
+    },
+    "quiz_title": {
+      "type": "string"
+    },
+    "host_email": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "classic",
+        "strikeout",
+        "sabotage",
+        "gamble",
+        "realm_rush",
+        "mind_maze",
+        "labyrinth"
+      ],
+      "default": "classic"
+    },
+    "time_limit": {
+      "type": "number",
+      "default": 20,
+      "description": "Time limit per question in seconds"
+    },
+    "group_id": {
+      "type": "string"
+    },
+    "gamemaker_game_id": {
+      "type": "string",
+      "description": "ID of custom GameMaker game if applicable"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "waiting",
+        "playing",
+        "finished"
+      ]
+    },
+    "players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "default": 0
+          },
+          "is_finished": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "spectators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "default": [],
+      "description": "Users watching the game"
+    },
+    "sabotages": {
+      "type": "array"
+    },
+    "maze_board": {
+      "type": "array",
+      "description": "2D array for maze-based games"
+    },
+    "misc_data": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Flexible storage for custom game data"
+    }
+  },
+  "required": [
+    "game_code",
+    "quiz_id",
+    "host_email"
+  ]
+}

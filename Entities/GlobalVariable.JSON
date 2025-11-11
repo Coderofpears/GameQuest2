@@ -1,0 +1,36 @@
+{
+  "name": "GlobalVariable",
+  "type": "object",
+  "properties": {
+    "game_id": {
+      "type": "string",
+      "description": "GameMaker game ID"
+    },
+    "variable_name": {
+      "type": "string",
+      "description": "Variable name"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "all_players",
+        "client"
+      ],
+      "default": "client",
+      "description": "Variable scope - shared across all players or client-only"
+    },
+    "default_value": {
+      "type": "string",
+      "description": "Default value (JSON string)"
+    },
+    "current_value": {
+      "type": "string",
+      "description": "Current value (JSON string)"
+    }
+  },
+  "required": [
+    "game_id",
+    "variable_name",
+    "scope"
+  ]
+}

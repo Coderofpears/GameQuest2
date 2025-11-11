@@ -1,0 +1,51 @@
+{
+  "name": "Challenge",
+  "type": "object",
+  "properties": {
+    "quiz_id": {
+      "type": "string"
+    },
+    "quiz_title": {
+      "type": "string"
+    },
+    "challenger_email": {
+      "type": "string"
+    },
+    "challenger_name": {
+      "type": "string"
+    },
+    "challenger_session_id": {
+      "type": "string"
+    },
+    "challenger_score": {
+      "type": "number"
+    },
+    "challenged_email": {
+      "type": "string"
+    },
+    "challenged_session_id": {
+      "type": "string"
+    },
+    "challenged_score": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "declined"
+      ],
+      "default": "pending"
+    },
+    "winner_email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "quiz_id",
+    "challenger_email",
+    "challenged_email",
+    "challenger_session_id"
+  ]
+}

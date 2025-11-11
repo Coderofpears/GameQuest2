@@ -1,0 +1,124 @@
+{
+  "name": "GameMakerGame",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Email of the user who created this game"
+    },
+    "game_name": {
+      "type": "string",
+      "description": "Name of the game project"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the game"
+    },
+    "game_data": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "The game blocks and configuration"
+    },
+    "group_id": {
+      "type": "string",
+      "description": "If attached to a group, the group's ID"
+    },
+    "quiz_id": {
+      "type": "string",
+      "description": "If using a quiz for questions, the quiz ID"
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of user emails who can edit this game",
+      "default": []
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this game is publicly accessible"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this game is published to the marketplace"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Optional thumbnail/preview image"
+    },
+    "play_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times this game has been played"
+    },
+    "average_rating": {
+      "type": "number",
+      "default": 0,
+      "description": "Average rating from 0-5"
+    },
+    "rating_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of ratings received"
+    },
+    "forked_from": {
+      "type": "string",
+      "description": "ID of the original game if this is a fork"
+    },
+    "fork_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times this game has been forked"
+    }
+  },
+  "required": [
+    "user_id",
+    "game_name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "collaborators": {
+            "$in": [
+              "{{user.email}}"
+            ]
+          }
+        },
+        {
+          "is_published": true
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "write": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "collaborators": {
+            "$in": [
+              "{{user.email}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

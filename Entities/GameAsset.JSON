@@ -1,0 +1,103 @@
+{
+  "name": "GameAsset",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Asset name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Asset description"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "image",
+        "sound",
+        "sprite",
+        "background"
+      ],
+      "description": "Type of asset"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL to the asset file"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Preview thumbnail"
+    },
+    "creator_email": {
+      "type": "string",
+      "description": "Creator's email"
+    },
+    "price": {
+      "type": "number",
+      "default": 0,
+      "description": "Price in scrap (0 = free)"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": true,
+      "description": "Available in marketplace"
+    },
+    "download_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times downloaded"
+    },
+    "purchase_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Times purchased"
+    },
+    "revenue_earned": {
+      "type": "number",
+      "default": 0,
+      "description": "Total scrap earned"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Searchable tags"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "file_url",
+    "creator_email"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "is_public": true
+        },
+        {
+          "creator_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "write": {
+      "$or": [
+        {
+          "creator_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

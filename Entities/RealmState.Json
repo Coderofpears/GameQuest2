@@ -1,0 +1,49 @@
+{
+  "name": "RealmState",
+  "type": "object",
+  "properties": {
+    "game_room_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "gold": {
+      "type": "number",
+      "default": 50
+    },
+    "wood": {
+      "type": "number",
+      "default": 50
+    },
+    "mana": {
+      "type": "number",
+      "default": 10
+    },
+    "army": {
+      "type": "number",
+      "default": 5
+    },
+    "defense": {
+      "type": "number",
+      "default": 5
+    },
+    "raid_cooldown_until": {
+      "type": "number",
+      "default": 0,
+      "description": "Timestamp until which the player cannot be raided"
+    },
+    "is_eliminated": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "game_room_id",
+    "user_email",
+    "user_name"
+  ]
+}

@@ -1,2 +1,2 @@
 # GameQuest2
-Version of gamequest
+Version of gamequest that exists purely to annoy me

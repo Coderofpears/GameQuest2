@@ -1,0 +1,43 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "required_quiz_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "shield_reward": {
+      "type": "number",
+      "default": 0
+    },
+    "scrap_reward": {
+      "type": "number",
+      "default": 0
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "title",
+    "start_date",
+    "end_date"
+  ]
+}

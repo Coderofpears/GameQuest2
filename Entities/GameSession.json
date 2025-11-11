@@ -1,0 +1,58 @@
+{
+  "name": "GameSession",
+  "type": "object",
+  "properties": {
+    "quiz_id": {
+      "type": "string",
+      "description": "ID of the quiz played"
+    },
+    "quiz_title": {
+      "type": "string",
+      "description": "Title of the quiz played"
+    },
+    "score": {
+      "type": "number",
+      "description": "Final score achieved"
+    },
+    "total_questions": {
+      "type": "number",
+      "description": "Total number of questions in quiz"
+    },
+    "correct_answers": {
+      "type": "number",
+      "description": "Number of correct answers"
+    },
+    "time_taken": {
+      "type": "number",
+      "description": "Total time taken in seconds"
+    },
+    "answers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_index": {
+            "type": "number"
+          },
+          "selected_answer": {
+            "type": "number"
+          },
+          "correct_answer": {
+            "type": "number"
+          },
+          "is_correct": {
+            "type": "boolean"
+          },
+          "time_taken": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "quiz_id",
+    "score",
+    "total_questions"
+  ]
+}

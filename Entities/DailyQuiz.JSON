@@ -1,0 +1,33 @@
+{
+  "name": "DailyQuiz",
+  "type": "object",
+  "properties": {
+    "quiz_id": {
+      "type": "string"
+    },
+    "quiz_title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "shield_reward": {
+      "type": "number"
+    },
+    "scrap_reward": {
+      "type": "number"
+    },
+    "completed_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of user emails who completed this daily quiz"
+    }
+  },
+  "required": [
+    "quiz_id",
+    "date"
+  ]
+}

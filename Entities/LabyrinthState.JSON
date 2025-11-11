@@ -1,0 +1,51 @@
+{
+  "name": "LabyrinthState",
+  "type": "object",
+  "properties": {
+    "game_room_id": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "position_x": {
+      "type": "number",
+      "default": 1
+    },
+    "position_y": {
+      "type": "number",
+      "default": 1
+    },
+    "energy": {
+      "type": "number",
+      "default": 100
+    },
+    "score": {
+      "type": "number",
+      "default": 0
+    },
+    "step_count": {
+      "type": "number",
+      "default": 0
+    },
+    "questions_answered": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "playing",
+        "finished"
+      ],
+      "default": "playing"
+    }
+  },
+  "required": [
+    "game_room_id",
+    "user_email"
+  ]
+}

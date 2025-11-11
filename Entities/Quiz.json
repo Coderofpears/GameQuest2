@@ -1,0 +1,137 @@
+{
+  "name": "Quiz",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_public": {
+      "type": "boolean",
+      "default": true,
+      "description": "Is this quiz visible in the public Discover page?"
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of user emails who can edit this quiz."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "general",
+        "sports",
+        "movies",
+        "science",
+        "history",
+        "music",
+        "tech",
+        "art",
+        "gaming",
+        "literature",
+        "food"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "correct_answer": {
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            ],
+            "description": "Index or array of indices of correct answers"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "question",
+          "options",
+          "correct_answer"
+        ]
+      }
+    },
+    "time_limit": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "title",
+    "questions"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "is_public": true
+        },
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "collaborators": {
+            "$in": [
+              "{{user.email}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "write": {
+      "$or": [
+        {
+          "created_by": "{{user.email}}"
+        },
+        {
+          "collaborators": {
+            "$in": [
+              "{{user.email}}"
+            ]
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}
